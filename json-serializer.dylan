@@ -79,6 +79,6 @@ define method write-object (serializer :: <json-serializer>, object :: singleton
   write(serializer.stream, "true");
 end;
 
-define function write-object-to-json-string(object)
+define function write-object-to-json-string (object)
   write-object-to-string(<json-serializer>, object);
 end;

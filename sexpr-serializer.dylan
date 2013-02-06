@@ -85,6 +85,6 @@ define method write-object (serializer :: <sexpr-serializer>, object :: singleto
   write(serializer.stream, "true");
 end;
 
-define function write-object-to-sexpr-string(object)
+define function write-object-to-sexpr-string (object)
   write-object-to-string(<sexpr-serializer>, object);
 end;

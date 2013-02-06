@@ -25,7 +25,7 @@ define generic write-object-field-start (serializer :: <serializer>, field-name 
 
 define generic write-separator-array (serializer :: <serializer>);
 
-define generic write-separator-field-name(serializer :: <serializer>);
+define generic write-separator-field-name (serializer :: <serializer>);
 
 define generic write-separator-object (serializer :: <serializer>);
 
@@ -75,7 +75,7 @@ define method write-object (serializer :: <serializer>, object :: <table>)
   write-end-object(serializer);
 end;
 
-define function write-object-to-string(serializer-class :: subclass(<serializer>), object)
+define function write-object-to-string (serializer-class :: subclass(<serializer>), object)
   let s :: <byte-string-stream>
     = make(<byte-string-stream>,
      contents: make(<byte-string>, size: 32), direction: #"output");
