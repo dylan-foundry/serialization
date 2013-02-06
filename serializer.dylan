@@ -23,6 +23,8 @@ define generic write-object (serializer :: <serializer>, object);
 
 define generic write-object-field-start (serializer :: <serializer>, field-name :: <field-name>);
 
+define generic write-separator-array (serializer :: <serializer>);
+
 define generic write-start-array (serializer :: <serializer>);
 
 define generic write-start-object (serializer :: <serializer>);
@@ -44,8 +46,12 @@ end;
 
 define method write-object (serializer :: <serializer>, object :: <collection>)
   write-start-array(serializer);
-  for (o in object)
+  for (o in object,
+       i :: <integer> from 1)
     write-object(serializer, o);
+    unless (i = object.size)
+      write-separator-array(serializer);
+    end unless;
   end for;
   write-end-array(serializer);
 end;

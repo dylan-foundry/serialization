@@ -18,6 +18,10 @@ define method write-field-name (serializer :: <sexpr-serializer>, field-name :: 
   write-object(serializer, field-name);
 end;
 
+define method write-separator-array (serializer :: <sexpr-serializer>)
+  write(serializer.stream, " ");
+end method write-separator-array;
+
 define method write-start-array (serializer :: <sexpr-serializer>)
   write(serializer.stream, "(");
 end;

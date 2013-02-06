@@ -17,8 +17,8 @@ define module serialization
     write-end-array, write-end-object,
     write-field-name, write-field,
     write-object, write-object-field-start,
-    write-start-array, write-start-object,
-    write-object-to-string;
+    write-separator-array, write-start-array,
+    write-start-object, write-object-to-string;
 
   // This is only for use by the other modules in this
   // library.
