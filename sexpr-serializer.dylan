@@ -22,6 +22,10 @@ define method write-separator-array (serializer :: <sexpr-serializer>)
   write(serializer.stream, " ");
 end method write-separator-array;
 
+define method write-separator-field-name (serializer :: <sexpr-serializer>)
+  write(serializer.stream, " ");
+end method write-separator-field-name;
+
 define method write-start-array (serializer :: <sexpr-serializer>)
   write(serializer.stream, "(");
 end;

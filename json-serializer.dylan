@@ -22,6 +22,10 @@ define method write-separator-array (serializer :: <json-serializer>)
   write(serializer.stream, ",");
 end method write-separator-array;
 
+define method write-separator-field-name (serializer :: <json-serializer>)
+  write(serializer.stream, ":");
+end method write-separator-field-name;
+
 define method write-start-array (serializer :: <json-serializer>)
   write(serializer.stream, "[");
 end;
