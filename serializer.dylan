@@ -27,6 +27,8 @@ define generic write-separator-array (serializer :: <serializer>);
 
 define generic write-separator-field-name(serializer :: <serializer>);
 
+define generic write-separator-object (serializer :: <serializer>);
+
 define generic write-start-array (serializer :: <serializer>);
 
 define generic write-start-object (serializer :: <serializer>);
@@ -63,8 +65,12 @@ end;
 
 define method write-object (serializer :: <serializer>, object :: <table>)
   write-start-object(serializer);
-  for (value keyed-by key in object)
+  for (value keyed-by key in object,
+       i :: <integer> from 1)
     write-field(serializer, key, value);
+    unless (i = object.size)
+      write-separator-object(serializer);
+    end unless;
   end for;
   write-end-object(serializer);
 end;
