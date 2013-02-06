@@ -18,6 +18,24 @@ define method write-field-name (serializer :: <sexpr-serializer>, field-name :: 
   write-object(serializer, field-name);
 end;
 
+define method write-field (serializer :: <sexpr-serializer>, field-name :: <field-name>, object)
+  write-start-object(serializer);
+  next-method();
+  write-end-object(serializer);
+end;
+
+define method write-separator-array (serializer :: <sexpr-serializer>)
+  write(serializer.stream, " ");
+end method write-separator-array;
+
+define method write-separator-field-name (serializer :: <sexpr-serializer>)
+  write(serializer.stream, " ");
+end method write-separator-field-name;
+
+define method write-separator-object (serializer :: <sexpr-serializer>)
+  write(serializer.stream, " ");
+end method write-separator-object;
+
 define method write-start-array (serializer :: <sexpr-serializer>)
   write(serializer.stream, "(");
 end;
@@ -67,6 +85,6 @@ define method write-object (serializer :: <sexpr-serializer>, object :: singleto
   write(serializer.stream, "true");
 end;
 
-define function write-object-to-sexpr-string(object)
+define function write-object-to-sexpr-string (object)
   write-object-to-string(<sexpr-serializer>, object);
 end;

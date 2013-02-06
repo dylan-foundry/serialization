@@ -18,6 +18,18 @@ define method write-field-name (serializer :: <json-serializer>, field-name :: <
   write-object(serializer, field-name);
 end;
 
+define method write-separator-array (serializer :: <json-serializer>)
+  write(serializer.stream, ",");
+end method write-separator-array;
+
+define method write-separator-field-name (serializer :: <json-serializer>)
+  write(serializer.stream, ":");
+end method write-separator-field-name;
+
+define method write-separator-object (serializer :: <json-serializer>)
+  write(serializer.stream, ",");
+end method write-separator-object;
+
 define method write-start-array (serializer :: <json-serializer>)
   write(serializer.stream, "[");
 end;
@@ -67,6 +79,6 @@ define method write-object (serializer :: <json-serializer>, object :: singleton
   write(serializer.stream, "true");
 end;
 
-define function write-object-to-json-string(object)
+define function write-object-to-json-string (object)
   write-object-to-string(<json-serializer>, object);
 end;
