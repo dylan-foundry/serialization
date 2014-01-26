@@ -1,18 +1,6 @@
 module: serialization-test-suite
 synopsis: Test suite for the sexpr serialization.
 
-define suite sexpr-serialization-test-suite ()
-  test sexpr-boolean-test;
-  test sexpr-collection-single-item-test;
-  test sexpr-collection-multiple-items-test;
-  test sexpr-integer-test;
-  test sexpr-string-test;
-  test sexpr-string-test-with-escaped-characters;
-  test sexpr-symbol-test;
-  test sexpr-table-single-item-test;
-  test sexpr-table-multiple-items-test;
-end;
-
 define test sexpr-boolean-test ()
   check-equal("serialized true",
               write-object-to-sexpr-string(#t),
@@ -70,4 +58,16 @@ define test sexpr-table-multiple-items-test ()
   check-equal("serialized table with multiple items",
               write-object-to-sexpr-string(test-table),
               "((\"key\" 1) (\"key2\" 2))");
+end;
+
+define suite sexpr-serialization-test-suite ()
+  test sexpr-boolean-test;
+  test sexpr-collection-single-item-test;
+  test sexpr-collection-multiple-items-test;
+  test sexpr-integer-test;
+  test sexpr-string-test;
+  test sexpr-string-test-with-escaped-characters;
+  test sexpr-symbol-test;
+  test sexpr-table-single-item-test;
+  test sexpr-table-multiple-items-test;
 end;
