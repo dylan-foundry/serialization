@@ -1,18 +1,6 @@
 module: serialization-test-suite
 synopsis: Test suite for the json serialization.
 
-define suite json-serialization-test-suite ()
-  test json-boolean-test;
-  test json-collection-single-item-test;
-  test json-collection-multiple-items-test;
-  test json-integer-test;
-  test json-string-test;
-  test json-string-test-with-escaped-characters;
-  test json-symbol-test;
-  test json-table-single-item-test;
-  test json-table-multiple-items-test;
-end;
-
 define test json-boolean-test ()
   check-equal("serialized true",
               write-object-to-json-string(#t),
@@ -70,4 +58,16 @@ define test json-table-multiple-items-test ()
   check-equal("serialized table with multiple items",
               write-object-to-json-string(test-table),
               "{\"key\":1,\"key2\":2}");
+end;
+
+define suite json-serialization-test-suite ()
+  test json-boolean-test;
+  test json-collection-single-item-test;
+  test json-collection-multiple-items-test;
+  test json-integer-test;
+  test json-string-test;
+  test json-string-test-with-escaped-characters;
+  test json-symbol-test;
+  test json-table-single-item-test;
+  test json-table-multiple-items-test;
 end;

@@ -1,5 +1,5 @@
 module: serialization-test-suite
-synopsis: Test suite for the json library.
+synopsis: Test suite for the serialization library.
 
 define suite serialization-test-suite ()
   suite json-serialization-test-suite;
