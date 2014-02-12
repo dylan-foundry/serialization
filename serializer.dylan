@@ -63,6 +63,29 @@ define method write-object (serializer :: <serializer>, object :: <collection>)
   write-end-array(serializer);
 end;
 
+define class <property-list> (<object>)
+  constant slot plist-list :: <collection>,
+    required-init-keyword: list:;
+end;
+
+define method as (class == <property-list>, x :: <collection>)
+ => (res :: <property-list>)
+  make(<property-list>, list: x)
+end;
+
+define method write-object (serializer :: <serializer>, plist :: <property-list>)
+  write-start-object(serializer);
+  for (k from 0 below plist.plist-list.size by 2,
+       v from 1 by 2)
+    write-field(serializer, plist.plist-list[k], plist.plist-list[v]);
+    unless (v = plist.plist-list.size)
+      write-separator-object(serializer);
+    end unless;
+  end for;
+  write-end-object(serializer);
+end;
+
+
 define method write-object (serializer :: <serializer>, object :: <table>)
   write-start-object(serializer);
   for (value keyed-by key in object,

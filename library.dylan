@@ -23,7 +23,7 @@ define module serialization
 
   // This is only for use by the other modules in this
   // library.
-  export <field-name>, stream;
+  export <field-name>, stream, <property-list>;
 end module;
 
 define module json-serialization
