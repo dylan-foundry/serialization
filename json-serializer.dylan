@@ -50,21 +50,21 @@ define method write-object (serializer :: <json-serializer>, object :: <symbol>)
   write-object(serializer, as(<string>, object));
 end;
 
-define function escape-characters (string :: <string>) => (string :: <string>)
-  let output = "";
-  for (char :: <character> in string)
+define function escape-characters (string :: <byte-string>) => (string :: <byte-string>)
+  let output = make(limited(<stretchy-vector>, of: <byte-character>, size: string.size * 2));
+  for (char :: <byte-character> in string)
     select (char)
       '\\', '"', '\b', '\f', '\n', '\r', '\t' =>
-        output := add!(output, '\\');
-        output := add!(output, char);
+        add!(output, '\\');
+        add!(output, char);
       otherwise =>
-        output := add!(output, char);
+        add!(output, char);
     end;
   end;
-  output
+  as(<byte-string>, output)
 end;
 
-define method write-object (serializer :: <json-serializer>, object :: <string>)
+define method write-object (serializer :: <json-serializer>, object :: <byte-string>)
   let stream = serializer.stream;
   write(stream, "\"");
   write(stream, escape-characters(object));
