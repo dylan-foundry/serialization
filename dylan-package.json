@@ -1,6 +1,9 @@
 {
     "dependencies": [  ],
-    "dev-dependencies": [ "testworks" ],
+    "dev-dependencies": [
+        "sphinx-extensions",
+        "testworks"
+    ],
     "description": "Serialize objects in various formats",
     "name": "serialization",
     "version": "0.2.0",
