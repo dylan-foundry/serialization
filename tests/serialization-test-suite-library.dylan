@@ -12,7 +12,7 @@ end library;
 
 define module serialization-test-suite
   use common-dylan, exclude: { format-to-string };
-  use table-extensions, import: { table };
+  use table-extensions, import: { tabling };
   use format;
   use json-serialization;
   use sexpr-serialization;

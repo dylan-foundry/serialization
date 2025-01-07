@@ -1,0 +1,15 @@
+{
+    "dependencies": [  ],
+    "dev-dependencies": [
+        "sphinx-extensions",
+        "testworks"
+    ],
+    "description": "Serialize objects in various formats",
+    "name": "serialization",
+    "version": "0.2.0",
+    "url": "https://github.com/dylan-foundry/serialization",
+    "keywords": [ ],
+    "contact": "dylan-lang@googlegroups.com",
+    "license": "MIT",
+    "license-url": "https://github.com/dylan-foundry/serialization/blob/master/LICENSE"
+}

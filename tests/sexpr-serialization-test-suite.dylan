@@ -47,14 +47,14 @@ define test sexpr-symbol-test ()
 end;
 
 define test sexpr-table-single-item-test ()
-  let test-table = table(#"key" => 1);
+  let test-table = tabling(#"key" => 1);
   check-equal("serialized table with single item",
               write-object-to-sexpr-string(test-table),
               "((\"key\" 1))");
 end;
 
 define test sexpr-table-multiple-items-test ()
-  let test-table = table(#"key" => 1, #"key2" => 2);
+  let test-table = tabling(#"key" => 1, #"key2" => 2);
   check-equal("serialized table with multiple items",
               write-object-to-sexpr-string(test-table),
               "((\"key\" 1) (\"key2\" 2))");
